@@ -12,6 +12,8 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import com.google.firebase.ml.vision.text.FirebaseVisionText
+import com.kalyandechiraju.dictionaryvision.util.TextGraphic
 import com.kalyandechiraju.dictionaryvision.util.positiveButton
 import com.kalyandechiraju.dictionaryvision.util.showAlertDialog
 import com.kalyandechiraju.dictionaryvision.util.showProgressDialog
@@ -64,10 +66,34 @@ class MainActivity : AppCompatActivity() {
             setMessage(firebaseVisionText.text)
             positiveButton {  }
           }
+          processText(firebaseVisionText)
         }
         .addOnFailureListener {
           dialog.dismiss()
           Log.e("DictionaryVision", it.localizedMessage)
         }
+  }
+
+  private fun processText(firebaseVisionText: FirebaseVisionText) {
+    /*firebaseVisionText.textBlocks.forEach {
+      it.boundingBox
+      val myPaint = Paint()
+      myPaint.color = Color.rgb(255, 0, 0)
+      myPaint.strokeWidth = 10f
+      //.drawRect(100, 100, 200, 200, myPaint)
+    }*/
+
+    graphicOverlay.clear()
+    val blocks = firebaseVisionText.textBlocks
+    for (i in 0 until blocks.size) {
+      val lines = blocks[i].lines
+      for (j in lines.indices) {
+        val elements = lines[j].elements
+        for (k in elements.indices) {
+          val textGraphic = TextGraphic(graphicOverlay, elements[k])
+          graphicOverlay.add(textGraphic)
+        }
+      }
+    }
   }
 }

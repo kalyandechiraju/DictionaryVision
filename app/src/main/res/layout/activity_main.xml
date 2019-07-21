@@ -12,16 +12,18 @@
           android:layout_height="match_parent" />-->
 
   <ImageView
-          android:id="@+id/imageView"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:layout_marginStart="8dp"
-          android:layout_marginEnd="8dp"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          tools:srcCompat="@tools:sample/avatars" app:layout_constraintTop_toTopOf="parent"
-          android:layout_marginTop="16dp"
-          android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/button"/>
+    android:id="@+id/imageView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    app:layout_constraintBottom_toTopOf="@+id/button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:srcCompat="@tools:sample/avatars" />
 
   <Button
     android:id="@+id/button"
@@ -36,5 +38,14 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
+
+  <com.kalyandechiraju.dictionaryvision.util.GraphicOverlay
+    android:id="@+id/graphicOverlay"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="@id/imageView"
+    app:layout_constraintLeft_toLeftOf="@id/imageView"
+    app:layout_constraintRight_toRightOf="@id/imageView"
+    app:layout_constraintTop_toTopOf="@id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
