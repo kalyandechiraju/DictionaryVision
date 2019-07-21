@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DictionaryVision</string>
+  <string name="dialog_button_okay">Ok</string>
+  <string name="dialog_button_cancel">Cancel</string>
 </resources>
